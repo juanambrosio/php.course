@@ -46,6 +46,10 @@
 <h1>
 <?php
     echo traslate("text",$urlLang);
+
+ echo "NUEVO ELEMENTO";
+ echo "NUEVO ELEMENTO2";
+
 ?>
 </h1>
 </body>
