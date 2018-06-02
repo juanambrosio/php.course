@@ -83,3 +83,11 @@ echo $result;
 *COKIES
 *
 */
+
+************GIT*************+++
+actualizar los que se ha modificado
+git status //obtine los elementos modificados
+
+git commit -am "Se actualizo nuevo elemento" //prepara los cambios a subir
+
+git push origin master //Sube los cambios a master
