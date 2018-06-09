@@ -26,7 +26,7 @@ function GetString(string  $texto, string $urlLang = "es"):string
 
     $fr = fopen('/var/www/html/traslate.csv', 'r');
     while(false !== ( $line = fgetcsv($fr)) ){
-        $line[1] = $line[1] ?? null;
+
 
         if($line[$i] === $texto) {
 
