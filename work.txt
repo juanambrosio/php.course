@@ -1,0 +1,33 @@
+file_get_contents('a.csv', str_replace('buscado', 'remplazado',file_get_contents('a.csv'));
+
+
+<?php
+
+$fr = fopen('a.csv', 'r');
+$fw = fopen('b.csv', 'w+');
+
+echo '<pre>';
+while(false !== ( $line = fgetcsv($fr)) ){
+
+    /**
+     * Si la linea no tiene la posición 1, la crea como null
+     */
+    $line[1] = $line[1] ?? null;
+
+    var_dump('=================================');
+    var_dump($line);
+
+    if($line[1] === 'buscado') {
+        $line[1] = 'reemplazado';
+        //break; //Termina el ciclo en la primera coincidencia
+    }
+
+    var_dump($line);
+
+    fputcsv($fw, $line);
+}
+
+fclose($fr);
+fclose($fw);
+rename('b.csv', 'a.csv');
+
