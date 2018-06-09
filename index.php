@@ -12,6 +12,32 @@
             )
     );
 
+/**
+ * @param string $texto
+ * @param string $urlLang
+ * @return string
+ */
+function GetString(string  $texto, string $urlLang = "es"):string
+{
+
+    $i = $urlLang=="en"?0:1;
+    $traslate = $urlLang=="en"?1:0;
+    $res=$texto;
+
+    $fr = fopen('/var/www/html/traslate.csv', 'r');
+    while(false !== ( $line = fgetcsv($fr)) ){
+        $line[1] = $line[1] ?? null;
+
+        if($line[$i] === $texto) {
+
+            $res=($line[$traslate]);
+        }
+
+    }
+
+    return $res;
+}
+
     function traslate(string $text, string $urlLang = "es"): string
     {
         global $dictionary;
@@ -45,10 +71,9 @@
 <body>
 <h1>
 <?php
-    echo traslate("text",$urlLang);
+  //  echo traslate("text",$urlLang);
 
- echo "NUEVO ELEMENTO";
- echo "NUEVO ELEMENTO2";
+ echo GetString("hola",$urlLang);
 
 ?>
 </h1>
